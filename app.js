@@ -36,7 +36,7 @@ render: function() {
   }
   var total = document.getElementById('pike');
   var liEl = document.createElement('li');
-  liEl.textContent = 'total - ' + pike.cookiesPerDay(total) + ' cookies sold';
+  liEl.textContent = 'Total - ' + pike.cookiesPerDay(total) + ' cookies sold';
   total.appendChild(liEl);
 }
 };
@@ -80,7 +80,7 @@ render: function() {
   }
   var total = document.getElementById('seatac');
   var liEl = document.createElement('li');
-  liEl.textContent = 'total - ' + seatac.cookiesPerDay(total) + ' cookies sold';
+  liEl.textContent = 'Total - ' + seatac.cookiesPerDay(total) + ' cookies sold';
   total.appendChild(liEl);
 }
 };
@@ -124,7 +124,7 @@ render: function() {
   }
   var total = document.getElementById('seacenter');
   var liEl = document.createElement('li');
-  liEl.textContent = 'total - ' + seacenter.cookiesPerDay(total) + ' cookies sold';
+  liEl.textContent = 'Total - ' + seacenter.cookiesPerDay(total) + ' cookies sold';
   total.appendChild(liEl);
 }
 };
@@ -132,3 +132,49 @@ render: function() {
 seacenter.customersEachHour();
 seacenter.cookiesEachHour();
 seacenter.render();
+
+
+
+
+//Capitol Hill
+var capitol = {
+  name: 'Capitol Hill',
+  minCust: 23,
+  maxCust: 65,
+  avgPerCust: 6.3,
+  hourlyCookies: [], //Empty array to add method return into
+  customersEachHour: function(minCust, maxCust) {
+    return Math.floor(Math.random() * (this.maxCust - this.minCust) + this.minCust);
+  },
+  cookiesEachHour: function(){
+    for(var i = 0; i < hours.length; i++) {
+      var cookiesPer = Math.floor(this.avgPerCust * this.customersEachHour());
+      this.hourlyCookies.push(cookiesPer);
+    }
+    return this.hourlyCookies;
+  },
+  cookiesPerDay: function(){
+    var total = 0;
+    for(var i = 0; i < this.hourlyCookies.length; i++) {
+      total += this.hourlyCookies[i];
+
+    }
+    return total;
+  },
+render: function() {
+  var capitolUL = document.getElementById('capitol');
+  for(var i = 0; i < hours.length; i++) {
+    var liEl = document.createElement('li');
+    liEl.textContent = hours[i] + ': ' + capitol.hourlyCookies[i] + ' cookies per hour';
+    capitolUL.appendChild(liEl);
+  }
+  var total = document.getElementById('capitol');
+  var liEl = document.createElement('li');
+  liEl.textContent = 'Total - ' + capitol.cookiesPerDay(total) + ' cookies sold';
+  total.appendChild(liEl);
+}
+};
+
+capitol.customersEachHour();
+capitol.cookiesEachHour();
+capitol.render();
