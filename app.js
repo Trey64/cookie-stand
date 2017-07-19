@@ -2,10 +2,20 @@
 
 var hours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm', '8pm'];
 
-
+// Global variables
 var cookiesTable = document.getElementById('cookies');
-
 var cookieShops = [];
+
+var storeForm = document.getElementById('store-form');
+var newStores = [];
+
+// Constructor for form submission
+var StoreEntry = function(locationEntry, minEntry, maxEntry, avgEntry) {
+  this.locationEntry = locationEntry;
+  this.minEntry = minEntry;
+  this.maxEntry = maxEntry;
+  this.avgEntry = avgEntry;
+}
 
 //  Constructor function
 function StoreByLocation(name, minCustomers, maxCustomers, avgCookiesPerSale){
