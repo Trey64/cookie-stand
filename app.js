@@ -27,6 +27,9 @@ function StoreByLocation(name, minCustomers, maxCustomers, avgCookiesPerSale){
       }
   };
   this.totalCookiesPerDay = 0;
+
+  cookieShops.push(this);
+
   this.render = function(){
     var trEl = document.createElement('tr');
 
@@ -43,27 +46,11 @@ function StoreByLocation(name, minCustomers, maxCustomers, avgCookiesPerSale){
       var tdEl = document.createElement('td');
       tdEl.textContent = this.totalCookiesPerDay;
       trEl.appendChild(tdEl);
-}
-    cookiesTable.appendChild(trEl);
-  }
+      cookiesTable.appendChild(trEl);
+    }
     this.calcCookiesSoldEachHour();
-  }
-
-
-    // var cookieRender = document.getElementById('cookies');
-    // this.calcCookiesSoldEachHour();
-    // for(var i = 0; i < hours.length; i++){
-    //   var liEl = document.createElement('li');
-    //   liEl.textContent = hours[i] + ': ' + this.cookiesSoldEachHour[i] + ' cookies';
-    //   cookieRender.appendChild(liEl);
-    // }
-    // liEl = document.createElement('li');
-    // liEl.textContent = 'Total: ' + this.totalCookiesPerDay + ' cookies';
-    // cookieRender.appendChild(liEl);
   };
-    // this.render(cookieShops);
-    cookieShops.push(this);
-  }
+
 
   var cookieShops = [];
 
@@ -97,6 +84,10 @@ function makeHeaderRow(){
     thEl.textContent = hours[i];
     trEl.appendChild(thEl);
   }
+
+  var thEl = document.createElement('th');
+  thEl.textContent = 'Total';
+  trEl.appendChild(thEl);
 
   cookiesTable.appendChild(trEl);
 }
