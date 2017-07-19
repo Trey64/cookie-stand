@@ -5,6 +5,8 @@ var hours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '
 
 var cookiesTable = document.getElementById('cookies');
 
+var cookieShops = [];
+
 //  Constructor function
 function StoreByLocation(name, minCustomers, maxCustomers, avgCookiesPerSale){
   this.name = name;
@@ -48,11 +50,11 @@ function StoreByLocation(name, minCustomers, maxCustomers, avgCookiesPerSale){
       trEl.appendChild(tdEl);
       cookiesTable.appendChild(trEl);
     }
+
     this.calcCookiesSoldEachHour();
   };
 
 
-  var cookieShops = [];
 
   new StoreByLocation('Pike Place', 23, 65, 6.3);
   new StoreByLocation('SeaTac Airport', 3, 24, 1.2);
