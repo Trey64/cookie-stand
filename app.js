@@ -9,13 +9,8 @@ var cookieShops = [];
 var storeForm = document.getElementById('store-form');
 var newStores = [];
 
-// Constructor for form submission
-var StoreEntry = function(locationEntry, minEntry, maxEntry, avgEntry) {
-  this.locationEntry = locationEntry;
-  this.minEntry = minEntry;
-  this.maxEntry = maxEntry;
-  this.avgEntry = avgEntry;
-}
+
+
 
 //  Constructor function
 function StoreByLocation(name, minCustomers, maxCustomers, avgCookiesPerSale){
@@ -113,3 +108,56 @@ function cookieRows(){
 
 makeHeaderRow();
 cookieRows();
+
+
+
+// Constructor for form submission
+var StoreEntry = function(locationEntry, minEntry, maxEntry, avgEntry) {
+  this.locationEntry = locationEntry;
+  this.minEntry = minEntry;
+  this.maxEntry = maxEntry;
+  this.avgEntry = avgEntry;
+};
+
+// StoreEntry.prototype.render = function() {
+//
+// };
+
+
+// Function Declarations
+function renderAllSubmissions() {
+  // storeForm.innerHTML = '';
+
+  for(var i = 0; i < newStores.length; i++) {
+    storeForm.appendChild(newStores[i].render());
+  }
+
+
+};
+
+
+// Event Handler
+function handleStoreSubmit(event){
+  console.log('log of the event.target.storeLocation.value', event.target.storeLocation.value);
+  console.log('log of the event.target.storeMinCustomer.value', event.target.storeMinCustomers.value);
+  console.log('log of the event.target.storeMaxCustomers.value', event.target.storeMaxCustomers.value);
+  console.log('log of the event.target.storeAvgCookies.value', event.target.storeAvgCookies.value);
+
+  event.preventDefault();
+
+  var newStoreLocation = event.target.storeLocation.value;
+  var newMinCustomer = event.target.storeMinCustomers.value;
+  var newMaxCustomer = event.target.storeMaxCustomers.value;
+  var newAvgCookies = event.target.storeAvgCookies.value;
+
+
+  var newStoreEntry = new StoreEntry(newStoreLocation, newMinCustomer, newMaxCustomer, newAvgCookies);
+
+  newStores.push(newStoreEntry);
+
+  renderAllSubmissions();
+
+};
+
+// Event Listener
+storeForm.addEventListener('submit', handleStoreSubmit);
