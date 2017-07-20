@@ -1,14 +1,14 @@
 * {
   font-family: 'Helvetica';
   margin: 10px;
-  color: white;
+
 }
 
 html {
     margin: 0px;
     background: -webkit-linear-gradient(left top, #1A2980, #26D0CE);
     background-size: cover;
-
+    color: white;
 }
 
 
@@ -24,7 +24,31 @@ header {
   -webkit-border-radius: 10px;
 }
 
+.testimonials {
+  color: black;
+  border: 5px solid #ccc;
+  background-color: #eee;
+  border-radius: 5px;
+  padding: 12px;
+  margin: 12px 0;
+}
 
+.testimonials::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.testimonials img {
+  float: left;
+  margin-right: 20px;
+  border-radius: 40%;
+}
+
+.testimonials span {
+  font-size: 20px;
+  margin-right: 15px;
+}
 
 
 table {
