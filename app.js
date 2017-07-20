@@ -182,9 +182,9 @@ function handleStoreSubmit(event){
   event.preventDefault();
 
   var newStoreLocation = event.target.storeLocation.value;
-  var newMinCustomer = event.target.storeMinCustomers.value;
-  var newMaxCustomer = event.target.storeMaxCustomers.value;
-  var newAvgCookies = event.target.storeAvgCookies.value;
+  var newMinCustomer = parseInt(event.target.storeMinCustomers.value);
+  var newMaxCustomer = parseInt(event.target.storeMaxCustomers.value);
+  var newAvgCookies = parseInt(event.target.storeAvgCookies.value);
 
 
 
