@@ -73,8 +73,8 @@ function storesinDom(){
   var storelist = document.getElementbyId('id');
   for(var i = 0; i < cookieShops.length; i++){
     var liEl = document.createElement('li')
-    lieEl.textContent = cookieShops[i].location;
-    storeList.appendChild(lieEl);
+    liEl.textContent = cookieShops[i].location;
+    storeList.appendChild(liEl);
   }
 }
 
@@ -114,9 +114,50 @@ cookieRows();
 // Constructor for form submission
 var StoreEntry = function(locationEntry, minEntry, maxEntry, avgEntry) {
   this.locationEntry = locationEntry;
-  this.minEntry = minEntry;
-  this.maxEntry = maxEntry;
-  this.avgEntry = avgEntry;
+  this.minCustomers = minEntry;
+  this.maxCustomers = maxEntry;
+  this.avgCookiesPerSale = avgEntry;
+  this.cookiesSoldEachHour = [];
+
+  this.totalCookiesPerDay = 0;
+  this.customersEachHour = [];
+  this.calcCustomersEachHour = function(){
+    for(var i = 0; i < hours.length; i++){
+      this.customersEachHour.push(Math.floor(Math.random() * (this.maxCustomers - this.minCustomers + 1)) + this.minCustomers);
+    }
+  };
+  this.calcCookiesSoldEachHour = function(){
+      this.calcCustomersEachHour();
+      for(var i = 0; i < hours.length; i++){
+        this.cookiesSoldEachHour.push(Math.ceil(this.customersEachHour[i] * this.avgCookiesPerSale));
+        this.totalCookiesPerDay += this.cookiesSoldEachHour[i];
+        console.log(this.totalCookiesPerDay, 'running daily cookie total');
+      }
+  };
+
+  cookieShops.push(this);
+
+  this.render = function(){
+    this.calcCookiesSoldEachHour();
+    var trEl = document.createElement('tr');
+
+    var tdEl = document.createElement('td');
+    tdEl.textContent = this.locationEntry;
+    trEl.appendChild(tdEl);
+
+    for(var i = 0; i < hours.length; i++){
+      var tdEl = document.createElement('td');
+      tdEl.textContent = this.cookiesSoldEachHour[i];
+      trEl.appendChild(tdEl);
+    }
+
+      var tdEl = document.createElement('td');
+      tdEl.textContent = this.totalCookiesPerDay;
+      trEl.appendChild(tdEl);
+      // cookiesTable.appendChild(trEl);
+      return trEl;
+    }
+
 };
 
 // StoreEntry.prototype.render = function() {
@@ -126,13 +167,11 @@ var StoreEntry = function(locationEntry, minEntry, maxEntry, avgEntry) {
 
 // Function Declarations
 function renderAllSubmissions() {
-  // storeForm.innerHTML = '';
+//   storeForm.innerHTML = '';
 
   for(var i = 0; i < newStores.length; i++) {
-    storeForm.appendChild(newStores[i].render());
+    cookiesTable.appendChild(newStores[i].render());
   }
-
-
 };
 
 
@@ -151,9 +190,18 @@ function handleStoreSubmit(event){
   var newAvgCookies = event.target.storeAvgCookies.value;
 
 
+
   var newStoreEntry = new StoreEntry(newStoreLocation, newMinCustomer, newMaxCustomer, newAvgCookies);
+  // cookieShops[cookieShops.length - 1].render();
+
+  // event.target.storeLocation.value = null;
+  // event.target.storeMinCustomers.value = null;
+  // event.target.storeMaxCustomers.value = null;
+  // event.target.storeAvgCookies.value = null;
 
   newStores.push(newStoreEntry);
+
+  // newStoreEntry.cookieRows();
 
   renderAllSubmissions();
 
