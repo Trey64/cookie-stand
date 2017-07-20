@@ -1,6 +1,31 @@
 * {
   font-family: 'Helvetica';
+  margin: 10px;
+  color: white;
 }
+
+html {
+    margin: 0px;
+    background: -webkit-linear-gradient(left top, #1A2980, #26D0CE);
+    background-size: cover;
+
+}
+
+
+header {
+  margin: auto;
+  margin-bottom: 10px;
+  max-width: 90%;
+  text-align: center;
+  border: 10px solid #92B558;
+  padding: 20px;
+  border-radius: 10px;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+}
+
+
+
 
 table {
 	border: 10px solid black;
