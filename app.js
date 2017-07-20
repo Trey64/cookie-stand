@@ -10,8 +10,6 @@ var storeForm = document.getElementById('store-form');
 var newStores = [];
 
 
-
-
 //  Constructor function
 function StoreByLocation(name, minCustomers, maxCustomers, avgCookiesPerSale){
   this.name = name;
@@ -58,8 +56,6 @@ function StoreByLocation(name, minCustomers, maxCustomers, avgCookiesPerSale){
 
     this.calcCookiesSoldEachHour();
   }
-
-
 
 
   new StoreByLocation('Pike Place', 23, 65, 6.3);
@@ -151,23 +147,17 @@ var StoreEntry = function(locationEntry, minEntry, maxEntry, avgEntry) {
       var tdEl = document.createElement('td');
       tdEl.textContent = this.totalCookiesPerDay;
       trEl.appendChild(tdEl);
-      // cookiesTable.appendChild(trEl);
+      cookiesTable.appendChild(trEl);
       return trEl;
   };
   this.calcCookiesSoldEachHour();
 }
 
-// StoreEntry.prototype.render = function() {
-//
-// };
-
 
 // Function Declarations
 function renderAllSubmissions() {
-//   storeForm.innerHTML = '';
-
-  for(var i = 0; i < newStores.length; i++) {
-    cookiesTable.appendChild(newStores[i].render());
+  for(var i = 0; i < newStores.length ; i++) {
+    cookiesTable.appendChild(newStores.slice(-1)[i].render());
   }
 };
 
@@ -181,28 +171,28 @@ function handleStoreSubmit(event){
 
   event.preventDefault();
 
-  var newStoreLocation = event.target.storeLocation.value;
-  var newMinCustomer = event.target.storeMinCustomers.value;
-  var newMaxCustomer = event.target.storeMaxCustomers.value;
-  var newAvgCookies = event.target.storeAvgCookies.value;
+  if (!event.target.storeLocation.value || !event.target.storeMinCustomers.value|| !event.target.storeMaxCustomers.value || !event.target.storeAvgCookies.value) {
+  return alert('Fields can\'t be left blank!');
+}
 
+  var newStoreLocation = event.target.storeLocation.value;
+  var newMinCustomer = parseInt(event.target.storeMinCustomers.value);
+  var newMaxCustomer = parseInt(event.target.storeMaxCustomers.value);
+  var newAvgCookies = parseInt(event.target.storeAvgCookies.value);
 
 
   var newStoreEntry = new StoreEntry(newStoreLocation, newMinCustomer, newMaxCustomer, newAvgCookies);
 
-
-  // event.target.storeLocation.value = null;
-  // event.target.storeMinCustomers.value = null;
-  // event.target.storeMaxCustomers.value = null;
-  // event.target.storeAvgCookies.value = null;
+  event.target.storeLocation.value = null;
+  event.target.storeMinCustomers.value = null;
+  event.target.storeMaxCustomers.value = null;
+  event.target.storeAvgCookies.value = null;
 
   newStores.push(newStoreEntry);
 
-  // newStoreEntry.cookieRows();
-
   renderAllSubmissions();
-
 };
+
 
 // Event Listener
 storeForm.addEventListener('submit', handleStoreSubmit);
