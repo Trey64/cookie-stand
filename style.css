@@ -24,6 +24,25 @@ header {
   -webkit-border-radius: 10px;
 }
 
+h2 {
+    display:inline;
+}
+h2:after {
+    content:"\a";
+    white-space: pre;
+}
+
+#aboutFish {
+  position: relative;
+  left: 20px;
+}
+
+#fishies {
+  float: left;
+  margin: 10px 10px 0 0;
+}
+
+
 .testimonials {
   color: black;
   border: 5px solid #ccc;
@@ -49,6 +68,12 @@ header {
   font-size: 20px;
   margin-right: 15px;
 }
+
+
+#chinook {
+width: 283px;
+}
+
 
 
 table {
