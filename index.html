@@ -1,38 +1,66 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>Salmon Cookie Shops</title>
-    <link rel="stylesheet" href="style.css">
-  </head>
+<head>
+  <meta charset="utf-8">
+  <title>Seattle Salmon Cookies</title>
+  <link rel="stylesheet" href="style.css">
   <body>
-    <h1>Salmon Cookie Shops</h1>
-    <img src=salmon.png>
-
-    <form id="store-form">
-      <fieldset>
-        <legend>Add a new store</legend>
-
-        <label for="storeLocation">Location: </label>
-        <input name="storeLocation" type="text" />
-
-        <label for="storeMinCustomers">Minimum # of customers: </label>
-        <input name="storeMinCustomers" type="text" />
-
-        <label for="storeMaxCustomers">Maximum # of customers: </label>
-        <input name="storeMaxCustomers" type="text" />
-
-        <label for="storeAvgCookies">Average # of cookies per sale: </label>
-        <input name="storeAvgCookies" type="text" />
-
-        <button type="submit">Submit</button>
-
-      </fieldset>
-    </form>
-
-    <table id="cookies"></table>
+    <header>
+      <h1>Seattle Salmon Cookies</h1>
+      <img src="salmon.png" style="width: 600px">
+      <h3><i>Deliciously Fishy!</i></h3>
+    </header>
 
 
-    <script src="app.js"></script>
-  </body>
-</html>
+    <div class="about">
+    <div id="aboutFish">
+    <h2>About Us</h2>
+    <img src="cutter.jpg">
+    <img src="frosted-cookie.jpg">
+    </div>
+    <p>Our salmon cookies are fresh baked daily, made from ground up salmon caught right here in the Pacific Northwest! They make the perfect snack for adventurous foodies, or for those who scoff at the thought of chocolate chips or raisins in their sugary baked goods. Try one today!</p>
+  </div>
+    <hr>
+
+    <div class="locations">
+    <h2>Locations</h2>
+    <img id="fishies" src="fish.jpg">
+    <br><br>
+    <p>Proudly serving the city of Seattle at these fine locations:</p>
+      <ul>
+        <li>Pike Place</li>
+        <li>SeaTac Airport</li>
+        <li>Seattle Center</li>
+        <li>Capitol Hill</li>
+        <li>Alki Beach</li>
+      </ul>
+      <p>Our hours of operation are Monday-Saturday, 10:00 am - 7:00 pm</p>
+    </div>
+    <br><br>
+      <hr>
+
+
+      <h2>Merchandise</h2>
+      <p>Show your salmon cookie pride and buy our stuff! Click the image to see more.</p>
+      <a href="merch.html">
+        <img src="shirt.jpg">
+      </a>
+      <hr>
+
+      <div class="testimonials">
+        <h2>What our customers are saying...</h2>
+        <img src="family.jpg" style="width: 400px">
+        <p><span>The Doe Family</span>Seattle, WA</p>
+        <p>"Our family loves salmon cookies, especially with a nice glass of milk! Our kids refuse to eat fish, and we're too lazy to cook anyways, so this is a delicious way for them to get more Omega-3 fatty acids in their diet. Thanks, Pat!"</p>
+      </div>
+      <hr>
+
+
+      <footer>
+        <img id ="chinook" src="chinook.jpg">
+          <h3><a href="contact.html">Contact Us</a></h3>
+          <h3><a href="events.html">Upcoming Events</a></h3>
+          <h3><a href="faq.html">FAQ</a></h3>
+      </footer>
+    </body>
+    </html>
