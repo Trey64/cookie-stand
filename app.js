@@ -154,13 +154,13 @@ var StoreEntry = function(locationEntry, minEntry, maxEntry, avgEntry) {
 }
 
 
+
 // Function Declarations
 function renderAllSubmissions() {
   for(var i = 0; i < newStores.length ; i++) {
     cookiesTable.appendChild(newStores.slice(-1)[i].render());
   }
 };
-
 
 // Event Handler
 function handleStoreSubmit(event){
